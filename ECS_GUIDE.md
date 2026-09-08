@@ -99,6 +99,7 @@ namespace Features.Gravity.Systems
         {
             _filter.Dispose();
         }
+//обязательно должен быть еще on Disable а там внутри тож диспоуз
     }
 }
 ```
