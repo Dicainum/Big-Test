@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Features.Gravity.Systems;
+using Features.Movement.Systems;
 using Scellecs.Morpeh;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ namespace FeatureRunners
         private static IEnumerable<ISystem> FixedUpdateSystems()
         {
             yield return new GravitySystem();
+            yield return new MovementSystem();
         }
 
         private static IEnumerable<ISystem> LateUpdateSystems()
