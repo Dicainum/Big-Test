@@ -27,7 +27,7 @@ namespace Features.Movement.Systems
             float moveX = Input.GetAxisRaw("Horizontal");
             float moveZ = Input.GetAxisRaw("Vertical");
 
-            Vector3 direction = new Vector3(moveX, 0f, moveZ).normalized;
+            Vector3 inputDirection = new Vector3(moveX, 0f, moveZ).normalized;
 
             foreach (var entity in _filter)
             {
@@ -35,10 +35,10 @@ namespace Features.Movement.Systems
 
                 if (movable.Rigidbody != null)
                 {
-                    Vector3 newVelocity = direction * movable.Speed;
+                    Vector3 globalDirection = movable.Rigidbody.transform.TransformDirection(inputDirection);
 
+                    Vector3 newVelocity = globalDirection * movable.Speed;
                     newVelocity.y = movable.Rigidbody.linearVelocity.y;
-
                     movable.Rigidbody.linearVelocity = newVelocity;
                 }
             }

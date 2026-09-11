@@ -29,7 +29,7 @@ namespace FeatureRunners
 
         private static IEnumerable<ISystem> LateUpdateSystems()
         {
-            yield break;
+            yield return new Features.FirstPersonLook.Systems.FirstPersonLookSystem();
         }
         
         private void Awake()
