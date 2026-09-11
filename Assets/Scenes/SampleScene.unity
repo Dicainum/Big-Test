@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &330585544
 AudioListener:
   m_ObjectHideFlags: 0
@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 350045347}
   - component: {fileID: 350045346}
   - component: {fileID: 350045345}
+  - component: {fileID: 350045352}
   - component: {fileID: 350045344}
   - component: {fileID: 350045350}
   - component: {fileID: 350045351}
@@ -451,6 +452,22 @@ MonoBehaviour:
       m_Bits: 8
     JumpsLeft: 0
     IsGrounded: 0
+--- !u!114 &350045352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350045343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9685176dc340ad40a7ec98d0b069f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedData:
+    MoveInput: {x: 0, y: 0}
+    LookInput: {x: 0, y: 0}
+    JumpPressed: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

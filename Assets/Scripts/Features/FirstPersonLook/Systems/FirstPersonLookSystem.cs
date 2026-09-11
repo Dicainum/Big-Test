@@ -7,16 +7,24 @@ namespace Features.FirstPersonLook.Systems
     {
         public World World { get; set; }
         private Filter _filter;
+
         private Stash<Components.FirstPersonLook> _stash;
+        private Stash<Input.Components.PlayerInput> _inputStash;
 
         public void OnAwake()
         {
             _stash = World.GetStash<Components.FirstPersonLook>();
-            _filter = World.Filter.With<Components.FirstPersonLook>().Build();
+            _inputStash = World.GetStash<Input.Components.PlayerInput>();
+
+            _filter = World.Filter
+                .With<Components.FirstPersonLook>()
+                .With<Input.Components.PlayerInput>()
+                .Build();
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
         public void OnDisable()
         {
             Dispose();
@@ -24,20 +32,20 @@ namespace Features.FirstPersonLook.Systems
 
         public void OnUpdate(float deltaTime)
         {
-            float mouseX = Input.GetAxis("Mouse X");
-            float mouseY = Input.GetAxis("Mouse Y");
 
             foreach (var entity in _filter)
             {
                 ref var look = ref _stash.Get(entity);
+                ref var input = ref _inputStash.Get(entity);
 
-                look.BodyTransform.Rotate(Vector3.up * (mouseX * look.Sensitivity));
+                look.BodyTransform.Rotate(Vector3.up * (input.LookInput.x * look.Sensitivity));
 
-                look.Pitch -= mouseY * look.Sensitivity;
+                look.Pitch -= input.LookInput.y * look.Sensitivity;
                 look.Pitch = Mathf.Clamp(look.Pitch, -90f, 90f);
                 look.CameraTransform.localRotation = Quaternion.Euler(look.Pitch, 0f, 0f);
             }
         }
+
         public void Dispose()
         {
             _filter.Dispose();

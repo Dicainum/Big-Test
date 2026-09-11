@@ -10,17 +10,21 @@ namespace Features.Jump.Systems
         private Filter _filter;
         private Stash<Components.Jumpable> _jumpable;
         private Stash<Movement.Components.Movable> _movable;
+        private Stash<Input.Components.PlayerInput> _input;
 
         public void OnAwake()
         {
             _jumpable = World.GetStash<Components.Jumpable>();
             _movable = World.GetStash<Movement.Components.Movable>();
+            _input = World.GetStash<Input.Components.PlayerInput>();
 
             _filter = World.Filter
                 .With<Components.Jumpable>()
                 .With<Movement.Components.Movable>()
+                .With<Input.Components.PlayerInput>()
                 .Build();
         }
+
         public void OnDisable()
         {
             Dispose();
@@ -28,12 +32,11 @@ namespace Features.Jump.Systems
 
         public void OnUpdate(float deltaTime)
         {
-            bool jumpPressed = Input.GetKeyDown(KeyCode.Space);
-
             foreach (var entity in _filter)
             {
                 ref var jumpable = ref _jumpable.Get(entity);
                 ref var movable = ref _movable.Get(entity);
+                ref var input = ref _input.Get(entity);
 
                 if (movable.Rigidbody == null) continue;
 
@@ -45,7 +48,7 @@ namespace Features.Jump.Systems
                     jumpable.JumpsLeft = jumpable.MaxJumps;
                 }
 
-                if (jumpPressed && jumpable.JumpsLeft > 0)
+                if (input.JumpPressed && jumpable.JumpsLeft > 0)
                 {
                     jumpable.JumpsLeft--;
 
@@ -55,7 +58,6 @@ namespace Features.Jump.Systems
                 }
             }
         }
-
         public void Dispose()
         {
             _filter.Dispose();
