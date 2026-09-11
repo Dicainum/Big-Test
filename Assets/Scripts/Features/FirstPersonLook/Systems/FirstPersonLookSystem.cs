@@ -17,6 +17,10 @@ namespace Features.FirstPersonLook.Systems
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+        public void OnDisable()
+        {
+            Dispose();
+        }
 
         public void OnUpdate(float deltaTime)
         {
@@ -34,7 +38,6 @@ namespace Features.FirstPersonLook.Systems
                 look.CameraTransform.localRotation = Quaternion.Euler(look.Pitch, 0f, 0f);
             }
         }
-
         public void Dispose()
         {
             _filter.Dispose();

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Features.Gravity.Systems;
-using Features.Movement.Systems;
+//using Features.Gravity.Systems;
+//using Features.Movement.Systems;
 using Scellecs.Morpeh;
 using UnityEngine;
 
@@ -18,13 +18,13 @@ namespace FeatureRunners
         
         private static IEnumerable<ISystem> UpdateSystems()
         {
-            yield break;
+            yield return new Features.Jump.Systems.JumpSystem();
         }
 
         private static IEnumerable<ISystem> FixedUpdateSystems()
         {
-            yield return new GravitySystem();
-            yield return new MovementSystem();
+            yield return new Features.Gravity.Systems.GravitySystem();
+            yield return new Features.Movement.Systems.MovementSystem();
         }
 
         private static IEnumerable<ISystem> LateUpdateSystems()

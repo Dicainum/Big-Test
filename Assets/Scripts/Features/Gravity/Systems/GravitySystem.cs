@@ -42,5 +42,9 @@ namespace Features.Gravity.Systems
         {
             _filter.Dispose();
         }
+        public void OnDisable()
+        {
+            Dispose();
+        }
     }
 }

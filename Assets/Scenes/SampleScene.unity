@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 350045345}
   - component: {fileID: 350045344}
   - component: {fileID: 350045350}
+  - component: {fileID: 350045351}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -291,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedData:
-    Speed: 1
+    Speed: 3
     Rigidbody: {fileID: 0}
 --- !u!54 &350045345
 Rigidbody:
@@ -429,6 +430,27 @@ MonoBehaviour:
     BodyTransform: {fileID: 0}
     Sensitivity: 2
     Pitch: 0
+--- !u!114 &350045351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350045343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e9f8b7d348ce684f9a4a869a12236b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedData:
+    JumpForce: 4
+    MaxJumps: 2
+    GroundCheckDistance: 4
+    GroundLayer:
+      serializedVersion: 2
+      m_Bits: 8
+    JumpsLeft: 0
+    IsGrounded: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,7 +975,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: eb1e34a8cb4a77f408e129558ba266b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
