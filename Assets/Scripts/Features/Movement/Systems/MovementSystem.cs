@@ -19,6 +19,7 @@ namespace Features.Movement.Systems
             _filter = World.Filter
                 .With<Components.Movable>()
                 .With<Input.Components.PlayerInput>()
+                .Without<Dash.Components.DashingTag>()
                 .Build();
         }
 

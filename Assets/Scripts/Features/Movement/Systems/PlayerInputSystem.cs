@@ -24,6 +24,7 @@ namespace Features.Input.Systems
             Vector2 move = new Vector2(UnityEngine.Input.GetAxisRaw("Horizontal"), UnityEngine.Input.GetAxisRaw("Vertical"));
             Vector2 look = new Vector2(UnityEngine.Input.GetAxis("Mouse X"), UnityEngine.Input.GetAxis("Mouse Y"));
             bool jump = UnityEngine.Input.GetKeyDown(KeyCode.Space);
+            bool dash = UnityEngine.Input.GetKeyDown(KeyCode.LeftShift);
 
             foreach (var entity in _filter)
             {
@@ -31,6 +32,7 @@ namespace Features.Input.Systems
                 input.MoveInput = move;
                 input.LookInput = look;
                 input.JumpPressed = jump;
+                input.DashPressed = dash;
             }
         }
 

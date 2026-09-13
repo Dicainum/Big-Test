@@ -19,6 +19,7 @@ namespace FeatureRunners
         private static IEnumerable<ISystem> UpdateSystems()
         {
             yield return new Features.Input.Systems.PlayerInputSystem();
+            yield return new Features.Dash.Systems.DashSystem();
             yield return new Features.Jump.Systems.JumpSystem();
         }
 

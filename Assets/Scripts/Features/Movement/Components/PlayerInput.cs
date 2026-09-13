@@ -10,5 +10,6 @@ namespace Features.Input.Components
         [HideInInspector] public Vector2 MoveInput;
         [HideInInspector] public Vector2 LookInput;
         [HideInInspector] public bool JumpPressed;
+        [HideInInspector] public bool DashPressed;
     }
 }
